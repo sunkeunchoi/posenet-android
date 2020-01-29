@@ -63,6 +63,12 @@ import kotlin.math.abs
 import org.tensorflow.lite.examples.posenet.lib.BodyPart
 import org.tensorflow.lite.examples.posenet.lib.Person
 import org.tensorflow.lite.examples.posenet.lib.Posenet
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 class PosenetActivity :
   Fragment(),
@@ -225,6 +231,8 @@ class PosenetActivity :
 
   override fun onStart() {
     super.onStart()
+    AppCenter.start(getApplication(), "0310ebea-63d4-4357-93d2-424b879325a8",
+                  Analytics.class, Crashes.class);
     openCamera()
     posenet = Posenet(this.context!!)
   }
